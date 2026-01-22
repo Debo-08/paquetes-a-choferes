@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <title>Paquetes a Choferes</title>
+  <meta name="theme-color" content="#0b5fff" />
+  <link rel="manifest" href="/manifest.webmanifest" />
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <header class="app-header">
+    <h1>Paquetes a Choferes</h1>
+    <button id="btnInstall" class="secondary" hidden>Instalar</button>
+  </header>
+
+  <main class="container">
+    <section class="panel">
+      <h2>Choferes</h2>
+      <div class="row">
+        <input id="driverName" type="text" placeholder="Nombre del chofer (p. ej. Debora)" />
+        <input id="driverColor" type="color" value="#0b5fff" />
+        <button id="addDriver">Ingresar chofer</button>
+        <button id="clearDrivers" class="secondary">Vaciar choferes</button>
+      </div>
+      <ul id="driversList" class="chips"></ul>
+    </section>
+
+    <section class="panel">
+      <h2>Importar direcciones (.txt)</h2>
+      <p>Formato por bloque (separado por línea en blanco):<br>
+      Primera línea = <em>Nombre del chofer</em>, líneas siguientes = direcciones.</p>
+      <input id="txtFile" type="file" accept=".txt" />
+      <button id="importTxt">Importar</button>
+      <details class="hint">
+        <summary>Ejemplo</summary>
+        <pre>
+  
+        Debora
+        Uruguay 434
+        Lebensohn 644, Paso del Rey
+        Río tercero s/n, Derqui
+
+        Carlos
+        San Martín 1200, Moreno
+        ...</pre>
+      </details>
+    </section>
+
+    <section class="panel">
+      <h2 style="display:flex;align-items:center;justify-content:space-between">
+        Direcciones asignadas
+        <button id="btnClearAddresses" class="secondary">Vaciar direcciones</button>
+      </h2>
+          <!-- resto del panel -->
+      <div class="row">
+        <input id="addressInput" type="text" placeholder="Agregar dirección manual (calle y número, localidad opcional)" />
+        <select id="assignDriver"></select>
+        <button id="assignAddress">Asignar</button>
+      </div>
+
+      <div id="addressesBoard" class="board"></div>
+    </section>
+
+    <section class="panel">
+      <h2>Buscar por voz / texto</h2>
+      <div class="row">
+        <button id="micBtn" class="mic">🎤 Buscar por voz</button>
+        <label class="switch">
+          <input type="checkbox" id="offlineMode">
+          <span>Modo offline (texto)</span>
+        </label>
+      </div>
+      <textarea id="searchText" rows="3" placeholder="En modo offline, pegá varias direcciones separadas por coma, salto de línea o ' y '"></textarea>
+      <button id="runSearch">Buscar</button>
+
+      <div id="searchResults"></div>
+    </section>
+  </main>
+
+  <footer class="app-footer">
+    <small>v0.1.0 — Base PWA • IndexedDB • Import .txt • Búsqueda por voz (online) / texto (offline)</small>
+  </footer>
+
+  
+  <script type="module" src="./app.js"></script>
+  <script>
+    // Registrar Service Worker para PWA offline
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js').catch(console.error);
+      });
+    }
+  </script>
+</body>
+</html>

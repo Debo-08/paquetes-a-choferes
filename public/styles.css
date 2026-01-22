@@ -1,0 +1,57 @@
+:root{
+  --panel:#690ac8;
+  --primary:#322785;
+  --bg:#04060a;
+  --panel:#401768;
+  --text:#e8eaf0;
+  --muted:#9aa3b2;
+  --chip:#232a36;
+  --ok:#1faa5e;
+  --warn:#e0a800;
+  --danger:#d9534f;
+  --shadow:0 8px 24px rgba(0,0,0,.25);
+}
+
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,"Helvetica Neue","Noto Sans",Arial,"Apple Color Emoji","Segoe UI Emoji"}
+h1,h2{margin:0 0 .5rem}
+p{color:var(--muted);line-height:1.4}
+
+.app-header,.app-footer{
+  background:#0b5fff12;
+  border-bottom:1px solid #ffffff12;
+  padding:1rem 1.25rem;
+  display:flex;align-items:center;justify-content:space-between;
+  position:sticky;top:0;backdrop-filter:blur(6px)
+}
+.app-footer{position:static;border-top:1px solid #ffffff12;border-bottom:none}
+
+.container{max-width:1100px;margin:1rem auto;padding:0 1rem;display:grid;gap:1rem}
+.panel{background:var(--panel);border:1px solid #ffffff12;border-radius:16px;padding:1rem;box-shadow:var(--shadow)}
+.row{display:flex;gap:.5rem;flex-wrap:wrap;margin:.5rem 0}
+
+input[type="text"], textarea, select, input[type="color"]{
+  background:#0b1220;border:1px solid #233047;color:var(--text);padding:.6rem .7rem;border-radius:10px;outline:none;min-width:260px
+}
+textarea{width:100%}
+button{
+  background:var(--primary);color:white;border:none;padding:.6rem .9rem;border-radius:10px;cursor:pointer;font-weight:600
+}
+button.secondary{background:#25324a}
+button.mic{font-size:1rem}
+
+.chips{list-style:none;padding:0;margin:.5rem 0;display:flex;gap:.5rem;flex-wrap:wrap}
+.chip{
+  background:var(--chip);border:1px solid #ffffff12;border-radius:999px;padding:.35rem .7rem;display:flex;gap:.5rem;align-items:center
+}
+.chip .color{width:12px;height:12px;border-radius:999px;border:1px solid #00000055;display:inline-block}
+
+.board{display:grid;gap:.6rem}
+.card{
+  background:#0b1220;border:1px solid #ffffff12;border-radius:14px;padding:.8rem .9rem;display:flex;justify-content:space-between;align-items:center
+}
+.card .addr{font-weight:600}
+.card .meta{display:flex;gap:.7rem;align-items:center;color:var(--muted)}
+.badge{padding:.2rem .5rem;border-radius:999px;border:1px solid #ffffff12}
+
+.switch{display:flex;align-items:center;gap:.4rem;color:var(--muted)}
